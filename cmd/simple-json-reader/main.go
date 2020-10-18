@@ -36,6 +36,9 @@ func main() {
 		fmt.Println("Facebook Url: " + users.Users[i].Social.Facebook)
 	}
 	// defer the closing of our jsonFile so that we can parse it later on
+	file, _ := json.MarshalIndent(users, "", "  ")
+
+	_ = ioutil.WriteFile("./output/users.json", file, 0644)
 
 	defer jsonFile.Close()
 }
